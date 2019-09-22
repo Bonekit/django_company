@@ -1,0 +1,62 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="container">
+        <!-- Add new customer -->
+        <a href="{% url 'customer:customer-add' %}">
+            <button class="btn btn-primary mt-4">Add</button>
+        </a>
+
+        <!-- Table with customer data -->
+        {% if object_list %}
+            <table class="table mt-1">
+                <thead class="table-dark">
+                <tr>
+                    <th>Customer</th>
+                    <th>City</th>
+                    <th>Street</th>
+                    <th>Account Number</th>
+                    <th>Function</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for customer in object_list %}
+                    <tr>
+                        <td>{{ customer.company }}</td>
+                        <td>{{ customer.city }}</td>
+                        <td>{{ customer.street }}</td>
+                        <td>{{ customer.account_number }}</td>
+                        <td>
+                            <a href="{% url 'customer:customer-update' customer.ID %}">Update |</a>
+                            <a href="{% url 'customer:customer-delete' customer.ID %}">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No customers yet</p>
+        {% endif %}
+
+        <!-- Pagination -->
+        {% if is_paginated %}
+            <ul class="pagination">
+                {% if page_obj.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="/customer/?page={{ page_obj.previous_page_number }}">previous</a>
+                    </li>
+                {% endif %}
+                {% if page_obj.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="/customer/?page={{ page_obj.next_page_number }}">next</a>
+                    </li>
+                {% endif %}
+            </ul>
+        {% endif %}
+
+        <!-- Button to return to home -->
+        <a href="{% url 'main:index' %}">
+            <button class="btn btn-primary">Back to home</button>
+        </a>
+    </div>
+{% endblock %}

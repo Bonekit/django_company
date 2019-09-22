@@ -1,0 +1,11 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="container">
+        <form class="mt-4" action="" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" class="btn btn-primary" value="Confirm">
+        </form>
+    </div>
+{% endblock %}
