@@ -17,7 +17,7 @@ class Company(models.Model):
         verbose_name_plural = 'Companies'
 
     def get_absolute_url(self):
-        return reverse('company:company-detail', kwargs={'pk': self.ID})
+        return reverse('company:company-detail', kwargs={'pk': self.id})
 
     def save(self, *args, **kwargs):
         """ On Save, update timestamps """
