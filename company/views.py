@@ -6,7 +6,7 @@ from .forms import CompanyForm
 
 
 class CompanyCreate(CreateView):
-    """ View to add a new customer to the database """
+    """ View to add a new company to the database """
     model = Company
     form_class = CompanyForm
     template_name = "company/company_add.html"
