@@ -1,18 +1,19 @@
-{% extends 'base/base.html' %}
+{% extends 'pages/base.html' %}
 {% load static %}
 {% block content %}
     <div class="container">
-        <!-- Add new customer -->
-        <a href="{% url 'customer:customer-add' %}">
+        <!-- Add new company -->
+        <a href="{% url 'company:company-add' %}">
             <button class="btn btn-primary mt-4">Add</button>
         </a>
 
-        <!-- Table with customer data -->
+        <!-- Table with companies data -->
         {% if object_list %}
             <table class="table mt-1">
                 <thead class="table-dark">
                 <tr>
-                    <th>Customer</th>
+                    <th>LOGO</th>
+                    <th>Brand</th>
                     <th>City</th>
                     <th>Street</th>
                     <th>Account Number</th>
@@ -20,38 +21,66 @@
                 </tr>
                 </thead>
                 <tbody>
-                {% for customer in object_list %}
+                {% for company in company_list %}
                     <tr>
-                        <td>{{ customer.company }}</td>
-                        <td>{{ customer.city }}</td>
-                        <td>{{ customer.street }}</td>
-                        <td>{{ customer.account_number }}</td>
+                        {% if company.image_logo %}
+                            <td><img class="img-main img-fluid mb-3" src="{{ company.image_logo.url }}" alt="logo"
+                                     width="220" height="60"></td>
+                        {% else %}
+                            <td><img class="img-main img-fluid mb-3"
+                                     src="{% static 'company/img/noimage.png' %}" alt="nologo" width="100" height="60">
+                            </td>
+                        {% endif %}
+                        <td><a href="{{ company.get_absolute_url }}">{{ company.brand }}</a></td>
+                        <td>{{ company.city }}</td>
+                        <td>{{ company.street }}</td>
+                        <td>{{ company.account_number }}</td>
                         <td>
-                            <a href="{% url 'customer:customer-update' customer.ID %}">Update |</a>
-                            <a href="{% url 'customer:customer-delete' customer.ID %}">Delete</a>
+                            <a href="{% url 'company:company-update' company.id %}">Update |</a>
+                            <a href="{% url 'company:company-delete' company.id %}">Delete</a>
                         </td>
                     </tr>
                 {% endfor %}
                 </tbody>
             </table>
         {% else %}
-            <p>No customers yet</p>
+            <p>No companies yet</p>
         {% endif %}
 
         <!-- Pagination -->
         {% if is_paginated %}
             <ul class="pagination">
-                {% if page_obj.has_previous %}
+                {% if page_obj.has_other_pages %}
                     <li class="page-item">
-                        <a class="page-link" href="/customer/?page={{ page_obj.previous_page_number }}">previous</a>
+                        <a href="/company/?page=1" class="page-link text-black-50">&laquo; first</a>
                     </li>
-                {% endif %}
-                {% if page_obj.has_next %}
+                    {% if page_obj.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="/company/?page={{ page_obj.previous_page_number }}">previous</a>
+                        </li>
+                    {% else %}
+                        <li class="page-item">
+                            <a class="page-link" onclick="return false" href="">previous</a>
+                        </li>
+                    {% endif %}
                     <li class="page-item">
-                        <a class="page-link" href="/customer/?page={{ page_obj.next_page_number }}">next</a>
+                        <a class="page-link text-danger" href="#" disabled="True">{{ page_obj.number }}</a>
                     </li>
+                    {% if page_obj.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="/company/?page={{ page_obj.next_page_number }}">next</a>
+                        </li>
+                    {% else %}
+                        <li class="page-item">
+                            <a class="page-link" onclick="return false" href="">next</a>
+                        </li>
+                    {% endif %}
+                    <li class="page-item">
+                        <a class="page-link text-black-50" href="/company/?page={{ page_obj.paginator.num_pages }}">Last
+                            &raquo;</a>
+                    </li>
+                    </ul>
                 {% endif %}
-            </ul>
         {% endif %}
 
         <!-- Button to return to home -->

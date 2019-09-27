@@ -17,7 +17,10 @@ class CompanyForm(ModelForm):
         self.fields['account_number'].widget.attrs = {
             'class': 'form-control'
         }
+        self.fields['image_logo'].widget.attrs = {
+            'class': 'form-control'
+        }
 
     class Meta:
         model = models.Company
-        fields = ['brand', 'city', 'street', 'account_number']
+        fields = ['brand', 'city', 'street', 'account_number', 'image_logo']

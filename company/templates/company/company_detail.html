@@ -1,5 +1,51 @@
-{% extends 'base/base.html' %}
+{% extends 'pages/base.html' %}
 {% load static %}
 {% block content %}
-{{ object }}
-{% endblock %}
+    <section id="showcase-inner" class="py-2">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-12">
+                    <h1 class="display-4">{{ company_single.brand }}</h1>
+                    <p class="lead">
+                        {{ company_single.city }}, {{ company_single.street }}, {{ company_single.account_number }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="company" class="py-4">
+        <div class="container">
+            <a href="{% url 'company:company-list' %}">
+                <button class="btn btn-light mb-4">Back to Companies</button>
+            </a>
+            <div class="row">
+                <div class="col-md-6">
+                    {% if company_single.image_logo %}
+                        <img class="img-fluid mb-3" src="{{ company_single.image_logo.url }}" alt="logo">
+                    {% else %}
+                        <img class="img-fluid mb-3"
+                             src="{% static 'company/img/noimage.png' %}" alt="nologo">
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row mb-5">
+                <div class="col-md-6">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item text-secondary">Company Brand:
+                            <span class="float-right">{{ company_single.brand }}</span>
+                        </li>
+                        <li class="list-group-item text-secondary">City:
+                            <span class="float-right">{{ company_single.city }}</span>
+                        </li>
+                        <li class="list-group-item text-secondary">Street:
+                            <span class="float-right">{{ company_single.street }}</span>
+                        </li>
+                        <li class="list-group-item text-secondary">Account Number:
+                            <span class="float-right">{{ company_single.account_number }}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}

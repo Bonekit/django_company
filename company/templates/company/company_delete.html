@@ -1,10 +1,10 @@
-{% extends 'base/base.html' %}
+{% extends 'pages/base.html' %}
+{% load static %}
 {% block content %}
-    <div class="container">
-        <form action="" method="post">
-            {% csrf_token %}
-            <p>Are you sure you want to delete "{{ object }}"?</p>
-            <input type="submit" value="Confirm"/>
-        </form>
-    </div>
+    <form action="" method="post">
+    <h4>Delete a company</h4>
+        {% csrf_token %}
+        <p>Are you sure you want to delete "{{ object }}"?</p>
+        <input type="submit" value="Confirm"/>
+    </form>
 {% endblock content %}

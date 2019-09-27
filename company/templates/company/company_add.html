@@ -1,14 +1,15 @@
-{% extends 'base/base.html' %}
+{% extends 'pages/base.html' %}
 {% load static %}
 {% block content %}
     <div class="container">
-        <form class="mt-4" action="" method="post">
+        <form class="mt-4" action="" enctype="multipart/form-data" method="post">
+            <h4>Create a new company</h4>
             {% csrf_token %}
             {{ form.non_field_errors }}
             <div class="form-group">
-                {{ form.company.errors }}
-                <label for="{{ form.company.id_for_label }}">Company:</label>
-                {{ form.company }}
+                {{ form.brand.errors }}
+                <label for="{{ form.brand.id_for_label }}">Brand:</label>
+                {{ form.brand }}
             </div>
             <div class="form-group">
                 {{ form.city.errors }}
@@ -25,11 +26,16 @@
                 <label for="{{ form.account_number.id_for_label }}">Account Number:</label>
                 {{ form.account_number }}
             </div>
+            <div class="form-group">
+                {{ form.image_logo.errors }}
+                <label for="{{ form.image_logo.id_for_label }}">Logo:</label>
+                {{ form.image_logo }}
+            </div>
             <input class="btn btn-info" type="submit" value="Create">
         </form>
-        <!-- Button to return to home -->
-        <a href="{% url 'customer:customer-list' %}">
-            <button class="btn btn-primary mt-4">Back to Customers</button>
+        <!-- Button to return to the company list -->
+        <a href="{% url 'company:company-list' %}">
+            <button class="btn btn-primary mt-4">Back to Companies</button>
         </a>
     </div>
 {% endblock %}

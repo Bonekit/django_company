@@ -8,10 +8,18 @@
     <!-- Links -->
     <ul class="navbar-nav mr-auto">
         <li class="nav-item"><a class="nav-link" href="{% url 'main:index' %}">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="{% url 'customer:customer-list' %}">Customer</a></li>
+        {% if user.is_authenticated %}
+            <li class="nav-item"><a class="nav-link" href="{% url 'company:company-list' %}">Company</a></li>
+        {% endif %}
     </ul>
     <ul class="navbar-nav justify">
-        <li class="nav-item"><a class="nav-link" href="{% url 'main:index' %}">Register</a></li>
-        <li class="nav-item"><a class="nav-link" href="{% url 'main:index' %}">Login</a></li>
+        {% if user.is_authenticated %}
+            <li class="nav-item"><a class="nav-link font-weight-bold text-danger"
+                                    href="{% url 'main:index' %}">Welcome {{ user.first_name }}</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'account:account-sign_out' %}">Logout</a></li>
+        {% else %}
+            <li class="nav-item"><a class="nav-link" href="{% url 'account:account-sign_up' %}">Sign Up</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'account:account-sign_in' %}">Sign In</a></li>
+        {% endif %}
     </ul>
 </nav>

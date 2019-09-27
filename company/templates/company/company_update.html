@@ -1,11 +1,16 @@
-{% extends 'base/base.html' %}
+{% extends 'pages/base.html' %}
 {% load static %}
 {% block content %}
     <div class="container">
-        <form class="mt-4" action="" method="post">
+        <form class="mt-4" action="" enctype="multipart/form-data" method="post">
+            <h4>Update information about a company</h4>
             {% csrf_token %}
             {{ form.as_p }}
             <input type="submit" class="btn btn-primary" value="Confirm">
         </form>
+        <!-- Button to return to the company list -->
+        <a href="{% url 'company:company-list' %}">
+            <button class="btn btn-primary mt-4">Back to Companies</button>
+        </a>
     </div>
 {% endblock %}
