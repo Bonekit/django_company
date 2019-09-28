@@ -59,12 +59,11 @@ virtualenv venv
 
 * Windows
 `venv/script/activate`
-
+* Now: Clone the application
 * Install Django
 ```
 pip install -r requirements.txt
-````
-* Now: Clone the application
+```
 * Prepare the database
 
 **If you like to use other databases then sqlite3, please google how to configure Postgres, MySQL in the Django settings**
