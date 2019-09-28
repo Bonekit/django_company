@@ -124,10 +124,10 @@ Project Link: [https://github.com/Bonekit/django_company](https://github.com/Bon
 * [Font Awesome](https://fontawesome.com)
 * [Bootstrap](https://getbootstrap.com)
 * [JQuery](https://jquery.com)
-* [Django]([https://djangoproject.com])
-* [Bootswatch]([https://bootswatch.com])
+* [Django](https://djangoproject.com)
+* [Bootswatch](https://bootswatch.com)
 * [Python](https://python.org)
-* [othneildrew]([https://github.com/othneildrew])
+* [othneildrew](https://github.com/othneildrew)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [product-screenshot]: https://raw.githubusercontent.com/Bonekit/django_company/master/screenshot.png
