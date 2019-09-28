@@ -62,8 +62,7 @@ virtualenv venv
 
 * Install Django
 ```
-pip install django
-pip install sqlparse
+pip install -r requirements.txt
 ````
 * Now: Clone the application
 * Prepare the database
