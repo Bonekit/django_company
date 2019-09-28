@@ -31,8 +31,8 @@ With my application you can use the following features:
 
 * [Bootstrap](https://getbootstrap.com)
 * [JQuery](https://jquery.com)
-* [Django]([https://djangoproject.com])
-* [Bootswatch]([https://bootswatch.com])
+* [Django](https://djangoproject.com)
+* [Bootswatch](https://bootswatch.com)
 * [Python](https://python.org)
 
 
@@ -130,4 +130,4 @@ Project Link: [https://github.com/Bonekit/django_company](https://github.com/Bon
 * [othneildrew](https://github.com/othneildrew)
 
 <!-- MARKDOWN LINKS & IMAGES -->
-[product-screenshot]: https://raw.githubusercontent.com/Bonekit/django_company/master/screenshot.png
+[product-screenshot]: https://raw.githubusercontent.com/Bonekit/django_company/master/github/images/screenshot.png
