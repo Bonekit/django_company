@@ -22,7 +22,7 @@ Django.Company is not my first Django application, but the first I like to relea
 With my application you can use the following features:
 * User-Defaults (login, registration, logout)
 * Messages (JavaScript included)
-* C.R.U.D.: Companies
+* CRUD: Companies
 * Upload images (Logos)
 * Company-ListView with Pagination
 
